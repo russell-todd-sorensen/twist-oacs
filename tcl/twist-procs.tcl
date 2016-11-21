@@ -5,7 +5,7 @@ namespace eval ::twist {
 namespace eval ::twist::install {
 
     variable installed 0
-    variable version "0.9.31"
+    variable version "0.9.32"
     variable package "twist"
     variable sourceDirectory [ns_info tcllib] 
     variable packageDirectory [file dirname [file dirname [info script]]]
@@ -25,7 +25,7 @@ proc ::twist::install::init { } {
     
     variable installed [parameter::get_from_package_key -package_key $package -parameter installed -default 0]
     variable upgradeNow [parameter::get_from_package_key -package_key $package -parameter upgradeNow -default 0]
-    variable version [parameter::get_from_package_key -package_key $package -parameter version -default 0.9.31]
+    variable version [parameter::get_from_package_key -package_key $package -parameter version -default 0.9.32]
     variable sourceDirectory [parameter::get_from_package_key -package_key $package -parameter sourceDirectory -default ""]
     
     if {"$sourceDirectory" eq ""} {
