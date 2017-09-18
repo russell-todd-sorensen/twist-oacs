@@ -17,18 +17,15 @@ namespace eval ::twist::install {
 namespace eval ::twist::install {
     ns_log Notice "::twist::install installed = '$installed' versionDirectory = '$versionDirectory'"
     if {$installed} {
-	if {[file exists [file join $versionDirectory init.tcl]]} {
+	     if {[file exists [file join $versionDirectory init.tcl]]} {
             ns_log Notice "::twist::install sourcing '[file join $versionDirectory init.tcl]'"
             source [file join $versionDirectory init.tcl]
-        } else { 
+        } else {
             ns_log Notice "::twist::install upgrading to version $version"
             upgrade-version
             after-install
+            ns_log Notice "::twist::install sourcing '[file join $versionDirectory init.tcl]'"
             source [file join $versionDirectory init.tcl]
         }
     }
-
 }
-
-
-

@@ -19,17 +19,17 @@
         <maturity>1</maturity>
 
         <provides url="twist" version="0.9.34"/>
+        <provides url="twist-oacs" version="0.9.34"/>
 
         <callbacks>
             <callback type="after-install"  proc="::twist::install::after-install"/>
             <callback type="before-install"  proc="::twist::install::before-install"/>
         </callbacks>
         <parameters>
-            <parameter scope="instance" datatype="number" min_n_values="1"  max_n_values="1"  name="installed"  default="1" description="Indicates package source is ready to load."/>
+            <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="installed"  default="0" description="Indicates package source is ready to load."/>
             <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="linkDocumentation"  default="1" description="Upon execution of after-install, relinks doc/twist to new version of TWiST documentation."/>
-            <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="linkWebservices"  default="0" description="On execution of after-install, enables the relinking of example web services into package www."/>
-            <parameter scope="instance" datatype="string"  min_n_values="1"  max_n_values="1"  name="sourceDirectory" default="/web/servers/ns/servers/ns/packages" description="Directory where TWiST source code is stored. The default will be set during initialization. The default is [ns_server -server [ns_info server] tcllib], which is the private tcl directory for the current virtual server. This is usually the top level tcl directory where OpenACS was installed. If another location is desired to store the source files, edit this parameter and restart the server instance. The twist.info file may be edited prior to initial installation to use a different location."/>
-            <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="upgradeNow"  default="0" description="Forces the after-install callback to run and possibly adjust the symbolic link for the test web services. If source files are moved into place by hand, instead of using the version upgrade method, set this parameter to 1 and restart the server instance. After restart, this parameter will be reset to 0. This parameter only needs to be used when symbolic links to web services and documentation are being used."/>
+            <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="linkWebservices"  default="1" description="On execution of after-install, enables the relinking of example web services into package www."/>
+            <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="upgradeNow"  default="1" description="Forces the after-install callback to run and possibly adjust the symbolic link for the test web services. If source files are moved into place by hand, instead of using the version upgrade method, set this parameter to 1 and restart the server instance. After restart, this parameter will be reset to 0. This parameter only needs to be used when symbolic links to web services and documentation are being used."/>
             <parameter scope="instance" datatype="string"  min_n_values="1"  max_n_values="1"  name="version"  default="0.9.34" description="Version of TWiST to install. To upgrade or downgrade the TWiST version, change the version number and restart the server instance. The TWiST version will be downloaded using the subversion command, unless the source is already available. If the source is already in place, use the upgradeNow parameter to re-establish any missing links. "/>
         </parameters>
 
