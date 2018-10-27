@@ -81,7 +81,7 @@ proc ::twist::install::unpackFile { } {
 
     switch -exact -- $systemType {
       windows {
-        set trimmedTarDirectory [string range [file join $packageDirectory $sourcePackage] 14 end]
+        set trimmedTarDirectory [string range [file join $packageDirectory $sourcePackage] 0 end]
         exec gzip -d $downloadFile
         exec tar xf [string range $downloadFile 0 end-3]\
             --directory $trimmedTarDirectory\
