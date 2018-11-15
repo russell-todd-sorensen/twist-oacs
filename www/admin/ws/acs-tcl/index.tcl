@@ -68,7 +68,7 @@
     return [list $ObjectID [acs_object_type $ObjectID]]
 } returns {
     {ObjectID:integer}
-    {ObjectType {minOccurs 0 default "Not Found"}}
+    {ObjectType {minOccurs 0 default "Object Not Found"}}
 }
 
 <ws>proc ::testoacs::ObjectGet {
