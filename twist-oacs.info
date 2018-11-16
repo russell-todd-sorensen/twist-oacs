@@ -10,16 +10,16 @@
     <inherit-templates-p>t</inherit-templates-p>
     <auto-mount>twist</auto-mount>
 
-    <version name="0.9.34" url="https://github.com/russell-todd-sorensen/twist-oacs/archive/0.9.34.tar.gz">
+    <version name="0.9.35" url="https://github.com/russell-todd-sorensen/twist-oacs/archive/0.9.35.tar.gz">
         <owner url="mailto:russell.todd.sorensen@gmail.com">Russell Sorensen</owner>
         <summary>Tcl Web Services Toolkit packaged for use with OpenACS</summary>
-        <release-date>2017-09-17</release-date>
+        <release-date>2018-11-15</release-date>
         <vendor url="http://github.semitasker.com/">Semitasker.com</vendor>
         <description format="text/plain">Tcl Web Services Toolkit packaged for use with OpenACS</description>
         <maturity>1</maturity>
 
-        <provides url="twist" version="0.9.34"/>
-        <provides url="twist-oacs" version="0.9.34"/>
+        <provides url="twist" version="0.9.35"/>
+        <provides url="twist-oacs" version="0.9.35"/>
 
         <callbacks>
             <callback type="after-install"  proc="::twist::install::after-install"/>
@@ -30,7 +30,7 @@
             <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="linkDocumentation"  default="1" description="Upon execution of after-install, relinks doc/twist to new version of TWiST documentation."/>
             <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="linkWebservices"  default="1" description="On execution of after-install, enables the relinking of example web services into package www."/>
             <parameter scope="instance" datatype="number"  min_n_values="1"  max_n_values="1"  name="upgradeNow"  default="1" description="Forces the after-install callback to run and possibly adjust the symbolic link for the test web services. If source files are moved into place by hand, instead of using the version upgrade method, set this parameter to 1 and restart the server instance. After restart, this parameter will be reset to 0. This parameter only needs to be used when symbolic links to web services and documentation are being used."/>
-            <parameter scope="instance" datatype="string"  min_n_values="1"  max_n_values="1"  name="version"  default="0.9.34" description="Version of TWiST to install. To upgrade or downgrade the TWiST version, change the version number and restart the server instance. The TWiST version will be downloaded using the subversion command, unless the source is already available. If the source is already in place, use the upgradeNow parameter to re-establish any missing links. "/>
+            <parameter scope="instance" datatype="string"  min_n_values="1"  max_n_values="1"  name="version"  default="0.9.35" description="Version of TWiST to install. To upgrade or downgrade the TWiST version, change the version number and restart the server instance. The TWiST version will be downloaded using the subversion command, unless the source is already available. If the source is already in place, use the upgradeNow parameter to re-establish any missing links. "/>
         </parameters>
 
     </version>

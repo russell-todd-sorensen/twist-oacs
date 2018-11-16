@@ -5,7 +5,7 @@ namespace eval ::twist {
 namespace eval ::twist::install {
 
     variable installed 0
-    variable version "0.9.34"
+    variable version "0.9.35"
     variable sourcePackage "twist"
     variable package twist-oacs
     variable sourceDirectory [ns_server -server [ns_info server] tcllib]
@@ -30,10 +30,9 @@ proc ::twist::install::init { } {
 
     variable installed [parameter::get_from_package_key -package_key $package -parameter installed -default 0]
     variable upgradeNow [parameter::get_from_package_key -package_key $package -parameter upgradeNow -default 0]
-    variable version [parameter::get_from_package_key -package_key $package -parameter version -default 0.9.34]
+    variable version [parameter::get_from_package_key -package_key $package -parameter version -default 0.9.35]
     variable linkWebservices [parameter::get_from_package_key -package_key $package -parameter linkWebservices -default 1]
     variable linkDocumentation [parameter::get_from_package_key -package_key $package -parameter linkDocumentation -default 1]
-
     variable versionDirectory [file join $packageDirectory $sourcePackage $sourcePackage-$version]
 
     return $installed
@@ -91,7 +90,7 @@ proc ::twist::install::unpackFile { } {
         set owner $tclLibAttributesArray(-owner)
         set group $tclLibAttributesArray(-group)
         exec tar xzf $downloadFile\
-            --directory $versionDirectory\
+            --directory [file join $packageDirectory $sourcePackage]\
             --owner $owner\
             --group $group\
             2>> [file join $versionDirectory $errorFile]
@@ -110,6 +109,8 @@ proc ::twist::install::before-install { } {
 }
 
 proc ::twist::install::deleteFileLink { linkName } {
+
+    variable systemType
 
     if {[file exists $linkName]} {
         if {"[file type $linkName]" eq "link"} {
@@ -156,7 +157,7 @@ proc ::twist::install::after-install { } {
 
     # initialize
     init
-
+    
     # link in web services
     if {$linkWebservices} {
         set linkName [file join $packageDirectory $package www ws]
